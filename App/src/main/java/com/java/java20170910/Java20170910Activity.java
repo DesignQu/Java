@@ -2,8 +2,10 @@ package com.java.java20170910;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 
-import com.java.R;
+import com.java.java20170910.code.code1.SendFactory;
+import com.java.java20170910.code.code1.Sender;
 
 /**
  * Java设计模式的分类
@@ -19,6 +21,46 @@ public class Java20170910Activity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        // 工厂方法模式
+        code1();
 
+        Log.e("---", "--------------------------------------------------------------------------------------------------");
+
+
+        Log.e("---", "--------------------------------------------------------------------------------------------------");
+
+
+        Log.e("---", "--------------------------------------------------------------------------------------------------");
+
+
+        Log.e("---", "--------------------------------------------------------------------------------------------------");
+
+
+        Log.e("---", "--------------------------------------------------------------------------------------------------");
+    }
+
+    /**
+     * 工厂模式适合：
+     * 凡是出现了大量的产品需要创建，并且具有共同的接口时，可以通过工厂方法模式进行创建。
+     * 在以上的三种模式中
+     * 第一种如果传入的字符串有误，不能正确创建对象，
+     * 第三种相对于第二种，不需要实例化工厂类，
+     * 所以，大多数情况下，我们会选用第三种——静态工厂方法模式。
+     */
+    private void code1() {
+        Log.e("---", "工厂方法模式--------------------------------------------------------------------------------------");
+        SendFactory sendFactory = new SendFactory();
+        Sender sender0 = sendFactory.produce(0);
+        sender0.send();
+        Sender sender1 = sendFactory.produce(1);
+        sender1.send();
+        Log.e("---", "多个工厂方法模式--------------------------------------------------------------------------------------------------");
+        Sender sender2 = sendFactory.produceSms();
+        sender2.send();
+        Sender sender3 = sendFactory.produceMail();
+        sender3.send();
+        Log.e("---", "静态工厂方法模式--------------------------------------------------------------------------------------------------");
+        Sender sender4 = SendFactory.produceStaticMail();
+        sender4.send();
     }
 }
