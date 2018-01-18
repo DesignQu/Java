@@ -8,8 +8,13 @@ import com.java.java20170910.code.code1.SendFactory;
 import com.java.java20170910.code.code1.Sender;
 import com.java.java20170910.code.code2.Singleton;
 import com.java.java20170910.code.code3.MyBuilder;
+import com.java.java20170910.code.code4.Prototype;
+
+import java.io.IOException;
 
 /**
+ * https://www.cnblogs.com/maowang1991/archive/2013/04/15/3023236.html
+ * <p>
  * Java设计模式的分类
  * 三大类
  * 创建型模式，共五种：工厂模式、抽象工厂模式、单例模式、建造者模式、原型模式。
@@ -37,6 +42,7 @@ public class Java20170910Activity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        // 创建型模式
         Log.e("---", "工厂模式--------------------------------------------------------------------------------------------------");
         code1();
 
@@ -46,8 +52,9 @@ public class Java20170910Activity extends AppCompatActivity {
         Log.e("---", "建造者模式--------------------------------------------------------------------------------------------------");
         code3();
 
-        Log.e("---", "--------------------------------------------------------------------------------------------------");
+        Log.e("---", "原型模式虽--------------------------------------------------------------------------------------------------");
         code4();
+
 
         Log.e("---", "--------------------------------------------------------------------------------------------------");
         code5();
@@ -81,10 +88,21 @@ public class Java20170910Activity extends AppCompatActivity {
     }
 
     /**
-     * 模式
+     * 原型模式虽然是创建型的模式，但是与工程模式没有关系，从名字即可看出，该模式的思想就是将一个对象作为原型，
+     * 对其进行复制、克隆，产生一个和原对象类似的新对象。在Java中，复制对象是通过clone()实现的
      */
     private void code4() {
-
+        Prototype prototype = new Prototype();
+        try {
+            Prototype prototype1 = (Prototype) prototype.clone();
+        } catch (CloneNotSupportedException e) {
+            e.printStackTrace();
+        }
+        try {
+            Prototype prototype2 = (Prototype) prototype.deepClone();
+        } catch (IOException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
     }
 
     /**
