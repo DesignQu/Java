@@ -11,6 +11,9 @@ import com.java.java20170910.code.code3.MyBuilder;
 import com.java.java20170910.code.code4.Prototype;
 import com.java.java20170910.code.code5.AdapterTest;
 import com.java.java20170910.code.code5.Targetable;
+import com.java.java20170910.code.code6.SourceSub1;
+import com.java.java20170910.code.code6.SourceSub2;
+import com.java.java20170910.code.code6.Sourceable;
 
 import java.io.IOException;
 
@@ -83,7 +86,13 @@ public class Java20170910Activity extends AppCompatActivity {
      * 重写我们需要的方法就行。
      */
     private void code6() {
+        Sourceable source1 = new SourceSub1();
+        Sourceable source2 = new SourceSub2();
 
+        source1.method1();
+        source1.method2();
+        source2.method1();
+        source2.method2();
     }
 
     /**
