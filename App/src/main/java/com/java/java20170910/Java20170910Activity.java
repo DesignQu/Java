@@ -9,6 +9,8 @@ import com.java.java20170910.code.code1.Sender;
 import com.java.java20170910.code.code2.Singleton;
 import com.java.java20170910.code.code3.MyBuilder;
 import com.java.java20170910.code.code4.Prototype;
+import com.java.java20170910.code.code5.AdapterTest;
+import com.java.java20170910.code.code5.Targetable;
 
 import java.io.IOException;
 
@@ -52,14 +54,14 @@ public class Java20170910Activity extends AppCompatActivity {
         Log.e("---", "建造者模式--------------------------------------------------------------------------------------------------");
         code3();
 
-        Log.e("---", "原型模式虽--------------------------------------------------------------------------------------------------");
+        Log.e("---", "原型模式--------------------------------------------------------------------------------------------------");
         code4();
 
-
-        Log.e("---", "--------------------------------------------------------------------------------------------------");
+        // 结构型模式
+        Log.e("---", "适配器模式--------------------------------------------------------------------------------------------------");
         code5();
 
-        Log.e("---", "--------------------------------------------------------------------------------------------------");
+        Log.e("---", "接口的适配器模式--------------------------------------------------------------------------------------------------");
         code6();
 
         Log.e("---", "--------------------------------------------------------------------------------------------------");
@@ -74,17 +76,28 @@ public class Java20170910Activity extends AppCompatActivity {
     }
 
     /**
-     * 模式
+     * 接口的适配器模式
+     * 有时我们写的一个接口中有多个抽象方法，当我们写该接口的实现类时，必须实现该接口的所有方法，这明显有时比较浪费，
+     * 因为并不是所有的方法都是我们需要的，有时只需要某一些，此处为了解决这个问题，我们引入了接口的适配器模式，借助于一个抽象类，
+     * 该抽象类实现了该接口，实现了所有的方法，而我们不和原始的接口打交道，只和该抽象类取得联系，所以我们写一个类，继承该抽象类，
+     * 重写我们需要的方法就行。
      */
     private void code6() {
 
     }
 
     /**
-     * 模式
+     * 适配器模式
+     * 有一个Source类，拥有一个方法，待适配，目标接口时Targetable，通过Adapter类，将Source的功能扩展到Targetable里
+     * 输出：
+     * this is original method!
+     * this is the targetable method!
+     * 这样Targetable接口的实现类就具有了Source类的功能。
      */
     private void code5() {
-
+        Targetable target = new AdapterTest();
+        target.method1();
+        target.method2();
     }
 
     /**
@@ -116,7 +129,9 @@ public class Java20170910Activity extends AppCompatActivity {
      * 单例模式
      */
     private void code2() {
-        Singleton.getSingleton();
+        Log.e("code2", Singleton.getSingletonA() + "");
+        Log.e("code2", Singleton.getSingletonA() + "");
+//        Singleton.getSingleton();
     }
 
     /**
