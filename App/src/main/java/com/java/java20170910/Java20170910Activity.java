@@ -6,6 +6,11 @@ import android.util.Log;
 
 import com.java.java20170910.code.code1.SendFactory;
 import com.java.java20170910.code.code1.Sender;
+import com.java.java20170910.code.code10.Bridge;
+import com.java.java20170910.code.code10.MyBridge;
+import com.java.java20170910.code.code10.SourceSub101;
+import com.java.java20170910.code.code10.SourceSub102;
+import com.java.java20170910.code.code10.Sourceable10;
 import com.java.java20170910.code.code2.Singleton;
 import com.java.java20170910.code.code3.MyBuilder;
 import com.java.java20170910.code.code4.Prototype;
@@ -19,6 +24,7 @@ import com.java.java20170910.code.code7.Source;
 import com.java.java20170910.code.code7.Sourceable7;
 import com.java.java20170910.code.code8.Proxy8;
 import com.java.java20170910.code.code8.Sourceable8;
+import com.java.java20170910.code.code9.Computer;
 
 import java.io.IOException;
 
@@ -78,10 +84,10 @@ public class Java20170910Activity extends AppCompatActivity {
         Log.e("---", "代理模式--------------------------------------------------------------------------------------------------");
         code8();
 
-        Log.e("---", "--------------------------------------------------------------------------------------------------");
+        Log.e("---", "外观模式--------------------------------------------------------------------------------------------------");
         code9();
 
-        Log.e("---", "--------------------------------------------------------------------------------------------------");
+        Log.e("---", "桥接模式--------------------------------------------------------------------------------------------------");
         code10();
 
         Log.e("---", "--------------------------------------------------------------------------------------------------");
@@ -116,17 +122,38 @@ public class Java20170910Activity extends AppCompatActivity {
     }
 
     /**
-     * 模式
+     * 桥接模式
+     * <p>
+     * 桥接模式就是把事物和其具体实现分开，使他们可以各自独立的变化。桥接的用意是：将抽象化与实现化解耦，使得二者可以独立变化，
+     * 像我们常用的JDBC桥DriverManager一样，JDBC进行连接数据库的时候，在各个数据库之间进行切换，基本不需要动太多的代码，甚至丝毫不用动，
+     * 原因就是JDBC提供统一接口，每个数据库提供各自的实现，用一个叫做数据库驱动的程序来桥接就行了。
      */
     private void code10() {
+        Bridge bridge = new MyBridge();
 
+        /*调用第一个对象*/
+        Sourceable10 source1 = new SourceSub101();
+        bridge.setSource(source1);
+        bridge.method();
+
+        /*调用第二个对象*/
+        Sourceable10 source2 = new SourceSub102();
+        bridge.setSource(source2);
+        bridge.method();
     }
 
     /**
-     * 模式
+     * 外观模式
+     * <p>
+     * 外观模式是为了解决类与类之间的依赖关系的，外观模式就是将他们的关系放在一个Facade类中，降低了类类之间的耦合度
+     * <p>
+     * 如果我们没有Computer类，那么，CPU、Memory、Disk他们之间将会相互持有实例，产生关系，这样会造成严重的依赖，
+     * 修改一个类，可能会带来其他类的修改，这不是我们想要看到的，有了Computer类，他们之间的关系被放在了Computer类里，这样就起到了解耦的作用，这，就是外观模式！
      */
     private void code9() {
-
+        Computer computer = new Computer();
+        computer.startup();
+        computer.shutdown();
     }
 
     /**
