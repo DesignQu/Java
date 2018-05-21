@@ -15,7 +15,7 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".java20170910.Java20170910Activity"/>
+        <activity android:name=".javadesignpatterns.JavaDesignPatternsActivity"/>
     </application>
 
 </manifest>
