@@ -16,6 +16,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".javadesignpatterns.JavaDesignPatternsActivity"/>
+        <activity android:name=".javasynchronized.JavaSynchronizedActivity"/>
     </application>
 
 </manifest>
