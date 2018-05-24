@@ -23,7 +23,7 @@ public class Singleton {
 
     public static Singleton getSingleton() {
         if (singleton == null) {
-            synchronized (singleton) {
+            synchronized (Singleton.class) {
                 if (singleton == null) {
                     singleton = new Singleton();
                 }
